@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 
@@ -40,17 +40,25 @@ int main()
 	// прибыль была максимальна и месяц, в котором прибыль была минимальна.
 	const int SizE = 12;
 	int firm[SizE];
+	int minMonth = 0, maxMonth = 0, min = 1, max = 1;
 	for (int i = 0; i < SizE; i++)
 	{
 		cout << "Enter the number of the month and profit for the month: ";
 		cin >> firm[i];
 	}
-	int min = 1, max = 1;
 	for (int i = 0; i < SizE; i++)
 	{
 		min = firm[i] > min ? min : firm[i];
 		max = firm[i] < max ? max : firm[i];
 	}
-	cout << "Min profit for the month = " << min << endl;
-	cout << "Max profit for the month = " << max << endl;
+	for (int i = 0;i < 12; i++) {
+		if (firm[i] > firm[maxMonth])
+			maxMonth = i;
+		if (firm[i] < firm[minMonth])
+			minMonth = i;
+	}
+	cout << "Month with max profit = " << maxMonth + 1 << endl;
+	cout << "Month with min profit = " << minMonth + 1 << endl;
+	cout << "Sum of Min profit for the month = " << min << endl;
+	cout << "Sum of Max profit for the month = " << max << endl;
 }
